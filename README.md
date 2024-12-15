@@ -1,6 +1,6 @@
 # Playwright E2E Testing Framework
 
-![Playwright logo](/assets/images/playwright-logo.png "Playwright logo")
+[Playwright Github](https://playwright.dev/img/playwright-logo.svg )
 
 Demo automation testing framework created with Playwright. A NodeJS library made for browser automation. It's free, open source and backed up by Microsoft. 
 
