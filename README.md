@@ -73,14 +73,23 @@ Running tests
 
 > npx playwright test
 
+# Reports
 For default report no changes required
+
 For Allure report, execute below commands and uncomment required code in playwright.config.ts
+
 > npm install @playwright/test allure-playwright 
+
 > npm install -g allure-commandline --save-dev
-Once Test case is executed get the allure report using below commands
+
+Once Test case is executed( npx playwright test) get the allure report using below commands
+
 > allure generate allure-results --clean
+
 > allure open
 
+
+# Other Commands
 Here are the most common options available in the command line.
 Run a single test file
 
