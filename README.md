@@ -49,6 +49,7 @@ The tests in the framework cover:
 - User login with provided credentials
 - User add 3 random items at the cart
 - User checkout them
+- E2E checkoput flow : https://github.com/Eckpraveen/Playwright/blob/main/tests/checkoutFlowE2E.spec.ts
 
 
 # UI E2E test
