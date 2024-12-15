@@ -1,0 +1,10 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/screenshots/
+/test-results-saucedemo/
+/LoginAuth.json
+/blob-report/
+/allure-results
+/allure-report
