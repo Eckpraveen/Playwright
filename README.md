@@ -64,7 +64,9 @@ More tests will be added over time.
 Get started by installing Playwright using npm or yarn. Alternatively you can also get started and run tests using the VS Code Extension.
 
 > npm init playwright@latest
+> 
 > npm install @faker-js/faker
+> 
 > yarn create playwright
 
 Running tests
