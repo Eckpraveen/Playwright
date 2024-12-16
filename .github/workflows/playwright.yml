@@ -1,27 +1,57 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Install Playwright and required browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # Set up global login state (precondition setup)
+      - name: Run Global Setup
+        run: npx playwright global-setup ./global-setup.ts
+
+      # Run Playwright tests
+      - name: Run Playwright Tests
+        run: npx playwright test
+        env:
+          CI: true
+
+      # Upload Playwright HTML report as an artifact
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+      # Upload screenshots and videos for debugging (optional)
+      - name: Upload Screenshots and Videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-artifacts
+          path: test-results/  # Replace with your configured artifacts path in Playwright config
