@@ -6,5 +6,5 @@ node_modules/
 /test-results-saucedemo/
 /LoginAuth.json
 /blob-report/
-/allure-results
-/allure-report
+/allure-results/
+/allure-report/

@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 
 // A Page Object Model page for checkout flow
 
@@ -53,29 +53,20 @@ export default class checkoutStepTwoPage {
     public getTotalPayable() {
         return this.page.locator(`div.summary_total_label`)
     }
-    // async firstName(firstname: string) {
-    //     await this.page.locator('input#first-name').click()
-    //     await this.page.locator('input#first-name').fill(firstname)
-    // }
 
-    // async lastName(lastname: string) {
-    //     await this.page.locator('input#last-name').click()
-    //     await this.page.locator('input#last-name').fill(lastname);
-    // }
-    
-    // async postalCode(postalCode: string) {
-    //     await this.page.locator('input#postal-code').click()
-    //     await this.page.locator('input#postal-code').fill(postalCode)
-    // }
+    async verifySummaryDetails(): Promise<void> {
+        expect(await this.getPaymentInfoLabel()).toHaveText('Payment Information:');
+        expect(await this.getShippingInfoLabel()).toHaveText('Shipping Information:');
+        expect(await this.getTotalInfoLabel()).toHaveText('Price Total');
 
+        const paymentInfo = await this.getPaymentInfoValue().textContent();
+        const shippingInfo = await this.getShippingInfoValue().textContent();
+        const itemTotal = await this.getTotalInfoItemTotal().textContent();
+        const taxValue = await this.getTotalInfoTaxValue().textContent();
+        const total = await this.getTotalPayable().textContent();
 
+        console.log({ paymentInfo, shippingInfo, itemTotal, taxValue, total });
+    }
 
-    // async completeCheckout(firstname: string, lastname: string, postalCode: string) {
-    //     await this.page.waitForLoadState('networkidle');
-    //     await this.firstName(firstname)
-    //     await this.lastName(lastname)
-    //     await this.postalCode(postalCode)
-    //     await this.continueBtn();
-    // }
 
 }
