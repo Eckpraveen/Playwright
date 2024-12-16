@@ -36,7 +36,7 @@ jobs:
 
       # Set up global login state (precondition setup)
       - name: Run Global Setup
-        run: npx ts-node ./global-setup.ts
+        run: npx ts-node --loader ts-node/esm ./global-setup.ts
 
       # Run Playwright tests
       - name: Run Playwright Tests
