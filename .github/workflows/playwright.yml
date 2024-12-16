@@ -30,6 +30,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      # Install ts-node to execute TypeScript files
+      - name: Install ts-node
+        run: npm install -g ts-node
+        
       # Set up global login state (precondition setup)
       - name: Run Global Setup
         run: npx playwright ./global-setup.ts
