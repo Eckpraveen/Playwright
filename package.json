@@ -1,15 +1,19 @@
 {
-  "name": "playwright-e2e",
+  "name": "playwright-saucedemo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "type": "module", 
+  "scripts": {
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
     "@playwright/test": "^1.49.1",
+    "ts-node": "^10.0.0",
     "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
