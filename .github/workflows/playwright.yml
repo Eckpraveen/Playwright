@@ -33,10 +33,10 @@ jobs:
       # Install ts-node to execute TypeScript files
       - name: Install ts-node
         run: npm install -g ts-node
-        
+
       # Set up global login state (precondition setup)
       - name: Run Global Setup
-        run: npx playwright ./global-setup.ts
+        run: npx ts-node ./global-setup.ts
 
       # Run Playwright tests
       - name: Run Playwright Tests
